@@ -1,0 +1,19 @@
+version: "3.9"
+
+networks:
+  adminpanel_net:
+    external: true
+    name: shared_ext
+
+services:
+  adminpanel:
+    container_name: ontime-adminpanel
+    image: ontime/adminpanel
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
+    networks:
+      - adminpanel_net
